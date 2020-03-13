@@ -45,10 +45,14 @@ class Solution2(object):
         return True
 
 
-"""
-给定一个链表, 返回链表开始入环的第一个节点, 如果链表无环, 则返回null
-"""
-
-"""
-给定一个链表, 如果链表有环返回环的长度, 如果无环返回null
-"""
+class Solution3(object):
+    def detectCycle(self, head):
+        visited = set()
+        node = head
+        while node is not None:
+            if node in visited:
+                return node
+            else:
+                visited.add(node)
+                node = node.next
+        return None
