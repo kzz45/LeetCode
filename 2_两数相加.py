@@ -81,3 +81,23 @@ class Solution2(object):
                     p3.next = None
                 break
         return l3
+
+
+class Solution3(object):
+    def addTwoNumbers(self, l1, l2):
+        if not l1 or not l2:
+            return
+        elif not l1:
+            return l2
+        elif not l2:
+            return l1
+        else:
+            if l1.val+l2.val < 10:
+                l3 = ListNode(l1.val+l2.val)
+                l3.next = self.addTwoNumbers(l1.next, l2.next)
+            else:
+                l3 = ListNode(l1.val+l2.val-10)
+                l3.next = self.addTwoNumbers(
+                    l1.next, self.addTwoNumbers(l2.next, ListNode(1)))
+        return l3
+
